@@ -22,3 +22,16 @@ function Converter(){
 export default Converter
 
 */
+
+/*  
+Reset button
+<button className="button" onClick={() => setDisplay(false)} >Reset</button>
+      {display ? <p>
+           {null} 
+      </p> :
+      <div className="time">
+           {document.querySelector(".input").value = ""}
+          <p>0 h : 0 min : 0 sec</p> 
+      </div>   
+      }
+*/

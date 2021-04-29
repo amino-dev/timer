@@ -1,14 +1,11 @@
-.timer {
-    display: flex;
-    flex-direction: column;
-}
 
-.title,.time {
+.title,.timer,.time {
    text-align: center;
 }
 
 .time {
     font-size: 2rem;
+    margin-top: -2rem;
 }
 
 .input {
@@ -22,8 +19,14 @@
 .button {
     font-size: 0.9rem;
     width: 7rem;
-    margin : 0 auto 0 auto;
+    margin : 0 auto 2.5rem auto;
     padding: 0.5rem;
     border-radius: 5px;
-    background-color: gray;
+    background-color: gray; 
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin : 0 25rem 0 25rem;
 }

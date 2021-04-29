@@ -1,0 +1,29 @@
+.timer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title,.time {
+   text-align: center;
+}
+
+.time {
+    font-size: 2rem;
+}
+
+.input {
+    font-size: 1rem;
+    width: 15rem;
+    margin : .5rem auto 1rem auto;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.button {
+    font-size: 0.9rem;
+    width: 7rem;
+    margin : 0 auto 0 auto;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: gray;
+}

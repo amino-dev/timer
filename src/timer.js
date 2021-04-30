@@ -29,29 +29,48 @@ class Timer extends React.Component {
       )
 export default Timer*/
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 function Timer(){
 
     const number = /^[+-]?\d*(?:[.,]\d*)?$/
 
     const [input,setInput] = useState(null)    
     const [display,setDisplay] = useState(false)
+    const [isActive, setIsActive] = useState(false);
 
-    
     function getInput(event){
         if (number.test(event.target.value))
             setInput(event.target.value)
         else 
-            alert("Enter a number please!!")
-    }
-
-    function reset(){
-      setInput(null)
-      {
-       let time = document.querySelector(".input")
-       time.value = ""
+        alert("Enter a number please!!")
       }
-    }
+  
+      function reset(){
+        setInput(null)
+        {
+         let time = document.querySelector(".input")
+         time.value = ""
+        }
+      }
+  
+      function toggle() {
+        setIsActive(!isActive);
+      }
+  
+      useEffect(() => {
+        let interval = null;
+        if (isActive) {
+          interval = setInterval(() => {
+            setInput(input => Math.ceil( (input % (3600)) % 60) + 1,
+            )
+          }, 1000)
+        } else if (!isActive && Math.ceil( (input % (3600)) % 60) !== 0) {
+          clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+      }, [isActive, Math.ceil( (input % (3600)) % 60)]);
+      
+    
   /*
     function start() {
       setInterval(
@@ -82,6 +101,9 @@ function Timer(){
           </div >
           <div className="buttons">
           <button className="button" onClick={() => reset()} >Reset</button>
+           <button className={`button button-primary button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
+          {isActive ? 'Pause' : 'Start'}
+          </button> 
            {/* <button className="button" onClick={() => start()} >Start</button> */}
           {/* <button className="button" onClick={() => pause()} >Pause</button>  */}
           

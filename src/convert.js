@@ -13,14 +13,14 @@ class Timer extends Component{
 
   change = () => {
 this.setState({
-    sec : document.getElementById("far").value 
+    sec : document.getElementById("input").value 
 })
   }
 
 render(){
     return(
         <div>
-          <input type="text" onChange={this.change}  id="far"/>
+          <input type="text" onChange={this.change}  id="input"/>
         <p>{Math.floor(this.state.sec / 3600)} hours</p>
         <p>{Math.floor((this.state.sec  % 3600) / 60)} Min</p>
         <p>{this.state.sec % 60 } sec </p>

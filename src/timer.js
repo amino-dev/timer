@@ -60,15 +60,14 @@ function Timer(){
       useEffect(() => {
         let interval = null;
         if (isActive) {
-          interval = setInterval(() => {
-            setInput(input => Math.ceil( (input % (3600)) % 60) + 1,
-            )
-          }, 1000)
-        } else if (!isActive && Math.ceil( (input % (3600)) % 60) !== 0) {
+        interval = setInterval(() => {
+            setInput(document.querySelector(".input").value++ )
+        }, 1000);
+        } else if (!isActive && input !== 0) {
           clearInterval(interval);
         }
-        return () => clearInterval(interval);
-      }, [isActive, Math.ceil( (input % (3600)) % 60)]);
+         return () => clearInterval(interval);
+        }, [isActive, input]);
       
     
   /*
@@ -86,7 +85,7 @@ function Timer(){
  let minutes =  Math.floor((input % (3600)) / 60)
  let seconds =  Math.ceil( (input % (3600)) % 60)
     return (
-    <div>
+    <div className="timer-section">
       <h1 className="title">Timer</h1>
         <div className="timer">
           <input className="input" type="text" placeholder="Enter a number" onChange={getInput}/>
@@ -94,14 +93,14 @@ function Timer(){
            {display ? <p>
              {
                <div className="time">
-                  <p>{hours} h : {minutes} min : {seconds} sec</p>      
+                  <p>{String(hours).padStart(2, '0')} h : {String(minutes).padStart(2, '0')}  min : {String(seconds).padStart(2, '0')}  sec</p>      
                </div>    
              }
           </p> :null}
           </div >
           <div className="buttons">
           <button className="button" onClick={() => reset()} >Reset</button>
-           <button className={`button button-primary button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
+           <button className={`button ${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
           {isActive ? 'Pause' : 'Start'}
           </button> 
            {/* <button className="button" onClick={() => start()} >Start</button> */}
